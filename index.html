@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+.comments-content { grid-template-columns: 1fr; gap: 2.5rem; } .comments-display
+{ max-height: 400px; }<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -47,6 +48,16 @@
         color: var(--text-primary);
         line-height: 1.6;
         overflow-x: hidden;
+      }
+
+      /* Page System */
+      .page {
+        display: none;
+        min-height: 100vh;
+      }
+
+      .page.active {
+        display: block;
       }
 
       /* Scrollbar Styling */
@@ -104,6 +115,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        cursor: pointer;
       }
 
       .logo-icon {
@@ -112,10 +124,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      }
-
-      .logo::before {
-        display: none;
       }
 
       .nav-menu {
@@ -136,6 +144,7 @@
         padding: 0.5rem 0;
         transition: all 0.3s ease;
         position: relative;
+        cursor: pointer;
       }
 
       .nav-link:hover,
@@ -278,6 +287,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
+        cursor: pointer;
       }
 
       .btn-secondary:hover {
@@ -334,7 +344,7 @@
         border-radius: 50%;
       }
 
-      /* Simple Robot CSS - At least show something! */
+      /* Simple Robot CSS */
       .simple-robot {
         width: 100%;
         height: 100%;
@@ -773,6 +783,7 @@
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+        cursor: pointer;
       }
 
       .pricing-button:hover {
@@ -966,7 +977,6 @@
         overflow: hidden;
         transition: all 0.3s ease;
         position: relative;
-        group: hover;
       }
 
       .portfolio-item:hover {
@@ -1172,7 +1182,8 @@
       }
 
       .form-group input,
-      .form-group textarea {
+      .form-group textarea,
+      .form-group select {
         width: 100%;
         background: var(--primary-bg);
         border: 1px solid var(--border-color);
@@ -1186,7 +1197,8 @@
       }
 
       .form-group input:focus,
-      .form-group textarea:focus {
+      .form-group textarea:focus,
+      .form-group select:focus {
         outline: none;
         border-color: var(--accent-purple);
         box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
@@ -1212,6 +1224,152 @@
       .form-submit:hover {
         transform: translateY(-1px);
         box-shadow: var(--shadow-medium);
+      }
+
+      /* Comments Section */
+      .comments {
+        padding: 4rem 0;
+        background: var(--secondary-bg);
+        position: relative;
+        z-index: 1;
+      }
+
+      .comments::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(139, 92, 246, 0.02) 0%,
+          transparent 50%
+        );
+        z-index: -1;
+      }
+
+      .comments-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .comments-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 2.5rem;
+      }
+
+      .comments-form {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-lg);
+        padding: 2rem;
+        height: fit-content;
+      }
+
+      .comments-display {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-lg);
+        padding: 2rem;
+        max-height: 500px;
+        overflow-y: auto;
+      }
+
+      .comment-item {
+        background: var(--primary-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-md);
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .comment-item:hover {
+        border-color: var(--accent-purple);
+        transform: translateY(-1px);
+      }
+
+      .comment-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .comment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+      }
+
+      .comment-author {
+        font-weight: 600;
+        color: var(--accent-purple);
+        font-size: 0.95rem;
+      }
+
+      .comment-date {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .comment-text {
+        color: var(--text-secondary);
+        line-height: 1.5;
+        font-size: 0.9rem;
+      }
+
+      .comment-submit {
+        width: 100%;
+        background: var(--gradient-1);
+        color: white;
+        border: none;
+        padding: 0.8rem;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .comment-submit:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .no-comments {
+        text-align: center;
+        color: var(--text-muted);
+        font-style: italic;
+        padding: 2rem;
+        background: var(--primary-bg);
+        border: 1px dashed var(--border-color);
+        border-radius: var(--border-radius-md);
+      }
+
+      .comments-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: var(--primary-bg);
+        border-radius: var(--border-radius-md);
+        border: 1px solid var(--border-color);
+      }
+
+      .total-comments {
+        color: var(--accent-purple);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .comments-icon {
+        color: var(--accent-purple);
+        font-size: 1.2rem;
       }
 
       /* Footer */
@@ -1292,9 +1450,139 @@
         font-size: 0.85rem;
       }
 
-      /* Responsive Design */
+      /* Form Pages Styling */
+      .form-page {
+        min-height: 100vh;
+        padding: 120px 0 4rem;
+        background: var(--primary-bg);
+      }
 
-      /* iPad/Tablet Responsiveness (768px - 1024px) */
+      .form-page-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .form-page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .form-page-title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .form-page-subtitle {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .package-info {
+        background: var(--card-bg);
+        border: 2px solid var(--accent-purple);
+        border-radius: var(--border-radius-lg);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .package-name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--accent-purple);
+        margin-bottom: 0.5rem;
+      }
+
+      .package-price {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .package-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .form-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-lg);
+        padding: 2.5rem;
+        box-shadow: var(--shadow-medium);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .additional-info {
+        background: rgba(139, 92, 246, 0.05);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: var(--border-radius-md);
+        padding: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .additional-info h4 {
+        color: var(--accent-purple);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .additional-info p {
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        margin: 0;
+      }
+
+      /* Loading animation */
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--primary-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .loading.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--border-color);
+        border-top: 3px solid var(--accent-purple);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive Design */
       @media (max-width: 1024px) and (min-width: 769px) {
         .nav-container {
           padding: 0 2rem;
@@ -1306,7 +1594,9 @@
         .portfolio-container,
         .contact-container,
         .stats-container,
-        .footer-container {
+        .footer-container,
+        .form-page-container,
+        .comments-container {
           padding: 0 2rem;
         }
 
@@ -1353,7 +1643,6 @@
         }
       }
 
-      /* Mobile/HP Responsiveness (max-width: 768px) */
       @media (max-width: 768px) {
         .nav-menu {
           position: fixed;
@@ -1407,12 +1696,10 @@
           padding: 0 1.5rem;
         }
 
-        /* Hide navbar CTA button on mobile */
         .nav-container .cta-button {
           display: none;
         }
 
-        /* Show CTA button in hero section but smaller */
         .hero-buttons .cta-button {
           display: inline-flex;
           padding: 0.5rem 1rem;
@@ -1426,7 +1713,6 @@
           padding: 0 1.5rem;
         }
 
-        /* Show robot on mobile */
         .hero-image {
           display: flex;
           justify-content: center;
@@ -1463,6 +1749,15 @@
         .contact-content {
           grid-template-columns: 1fr;
           gap: 2.5rem;
+        }
+
+        .comments-content {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .comments-display {
+          max-height: 400px;
         }
 
         .pricing-grid {
@@ -1504,7 +1799,9 @@
         .about-container,
         .portfolio-container,
         .contact-container,
-        .footer-container {
+        .footer-container,
+        .form-page-container,
+        .comments-container {
           padding: 0 1.5rem;
         }
 
@@ -1521,9 +1818,20 @@
           margin-bottom: 1rem;
           padding: 1.5rem;
         }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .form-page-title {
+          font-size: 1.8rem;
+        }
+
+        .package-price {
+          font-size: 1.7rem;
+        }
       }
 
-      /* Small Mobile (max-width: 480px) */
       @media (max-width: 480px) {
         .nav-container {
           padding: 0 1rem;
@@ -1566,7 +1874,8 @@
 
         .pricing-card,
         .portfolio-item,
-        .contact-form {
+        .contact-form,
+        .form-card {
           padding: 1.2rem;
         }
 
@@ -1597,7 +1906,9 @@
         .about-container,
         .portfolio-container,
         .contact-container,
-        .footer-container {
+        .footer-container,
+        .form-page-container,
+        .comments-container {
           padding: 0 1rem;
         }
 
@@ -1616,6 +1927,14 @@
           width: 40px;
           height: 40px;
         }
+
+        .form-page-title {
+          font-size: 1.5rem;
+        }
+
+        .package-price {
+          font-size: 1.5rem;
+        }
       }
 
       /* Animations */
@@ -1630,28 +1949,6 @@
         }
       }
 
-      @keyframes fadeInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes fadeInRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
       .animate-on-scroll {
         opacity: 0;
         transform: translateY(30px);
@@ -1663,59 +1960,19 @@
         transform: translateY(0);
       }
 
-      /* Loading animation */
-      .loading {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--primary-bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-      }
-
-      .loading.hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .spinner {
-        width: 50px;
-        height: 50px;
-        border: 3px solid var(--border-color);
-        border-top: 3px solid var(--accent-purple);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Smooth scrolling behavior */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Focus styles for accessibility */
       button:focus,
       a:focus,
       input:focus,
-      textarea:focus {
+      textarea:focus,
+      select:focus {
         outline: 2px solid var(--accent-purple);
         outline-offset: 2px;
       }
 
-      /* Print styles */
       @media print {
         .navbar,
         .footer,
@@ -1736,587 +1993,1394 @@
       <div class="spinner"></div>
     </div>
 
-    <!-- Mobile Overlay -->
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
-        <a href="#home" class="logo">
+        <div class="logo" onclick="showPage('home')">
           <i class="fas fa-code logo-icon"></i>
           MS.Dev
-        </a>
+        </div>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#pricing" class="nav-link">Pricing</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#portfolio" class="nav-link">Projects</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li>
+            <span class="nav-link active" onclick="showPage('home')">Home</span>
+          </li>
+          <li>
+            <span class="nav-link" onclick="scrollToSection('pricing')"
+              >Pricing</span
+            >
+          </li>
+          <li>
+            <span class="nav-link" onclick="scrollToSection('about')"
+              >About</span
+            >
+          </li>
+          <li>
+            <span class="nav-link" onclick="scrollToSection('portfolio')"
+              >Projects</span
+            >
+          </li>
+          <li>
+            <span class="nav-link" onclick="scrollToSection('comments')"
+              >Reviews</span
+            >
+          </li>
+          <li>
+            <span class="nav-link" onclick="scrollToSection('contact')"
+              >Contact</span
+            >
+          </li>
         </ul>
-        <a href="#" class="cta-button">
+        <span class="cta-button" onclick="scrollToSection('contact')">
           <i class="fas fa-arrow-right"></i>
-        </a>
+        </span>
         <button class="nav-toggle" id="nav-toggle">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-container">
-        <div class="hero-content animate-on-scroll">
-          <div class="hero-subtitle">WEBSITE DEVELOPER</div>
-          <h1 class="hero-title">
-            Professional Website Developer
-            <span class="hero-name">Esther Howard</span>
-          </h1>
-          <p class="hero-description">
-            Specialized in creating modern, responsive, and professional
-            websites that help businesses grow online. From simple landing pages
-            to complex e-commerce platforms, I deliver high-quality web
-            solutions tailored to your needs.
-          </p>
-          <div class="hero-buttons">
-            <a href="#contact" class="cta-button">
-              Start Your Website Project
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#portfolio" class="btn-secondary">
-              View Website Projects
-              <i class="fas fa-external-link-alt"></i>
-            </a>
+    <!-- Main Portfolio Page -->
+    <div class="page active" id="home-page">
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <div class="hero-container">
+          <div class="hero-content animate-on-scroll">
+            <div class="hero-subtitle">WEBSITE DEVELOPER</div>
+            <h1 class="hero-title">
+              Professional Website Developer
+              <span class="hero-name">Esther Howard</span>
+            </h1>
+            <p class="hero-description">
+              Specialized in creating modern, responsive, and professional
+              websites that help businesses grow online. From simple landing
+              pages to complex e-commerce platforms, I deliver high-quality web
+              solutions tailored to your needs.
+            </p>
+            <div class="hero-buttons">
+              <span class="cta-button" onclick="scrollToSection('contact')">
+                Start Your Website Project
+                <i class="fas fa-arrow-right"></i>
+              </span>
+              <span
+                class="btn-secondary"
+                onclick="scrollToSection('portfolio')"
+              >
+                View Website Projects
+                <i class="fas fa-external-link-alt"></i>
+              </span>
+            </div>
+          </div>
+          <div class="hero-image animate-on-scroll">
+            <div class="hero-image-container">
+              <div class="hero-image-inner">
+                <div class="robot-container">
+                  <div class="simple-robot">
+                    <div class="robot-head">
+                      <div class="robot-visor">
+                        <div class="robot-eye left-eye"></div>
+                        <div class="robot-eye right-eye"></div>
+                      </div>
+                      <div class="robot-ear left-ear">
+                        <div class="ear-center"></div>
+                      </div>
+                      <div class="robot-ear right-ear">
+                        <div class="ear-center"></div>
+                      </div>
+                    </div>
+                    <div class="robot-body">
+                      <div class="chest-accent"></div>
+                    </div>
+                    <div class="robot-arm left-arm"></div>
+                    <div class="robot-arm right-arm"></div>
+                    <div class="robot-leg left-leg"></div>
+                    <div class="robot-leg right-leg"></div>
+                    <div class="robot-foot left-foot"></div>
+                    <div class="robot-foot right-foot"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="floating-elements">
+              <div class="floating-element"></div>
+              <div class="floating-element"></div>
+              <div class="floating-element"></div>
+            </div>
           </div>
         </div>
-        <div class="hero-image animate-on-scroll">
-          <div class="hero-image-container">
-            <div class="hero-image-inner">
-              <!-- Simple Robot Fallback -->
-              <div class="robot-container">
-                <div class="simple-robot">
-                  <div class="robot-head">
-                    <div class="robot-visor">
-                      <div class="robot-eye left-eye"></div>
-                      <div class="robot-eye right-eye"></div>
-                    </div>
-                    <div class="robot-ear left-ear">
-                      <div class="ear-center"></div>
-                    </div>
-                    <div class="robot-ear right-ear">
-                      <div class="ear-center"></div>
-                    </div>
-                  </div>
-                  <div class="robot-body">
-                    <div class="chest-accent"></div>
-                  </div>
-                  <div class="robot-arm left-arm"></div>
-                  <div class="robot-arm right-arm"></div>
-                  <div class="robot-leg left-leg"></div>
-                  <div class="robot-leg right-leg"></div>
-                  <div class="robot-foot left-foot"></div>
-                  <div class="robot-foot right-foot"></div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats">
+        <div class="stats-container">
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Websites Built</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item animate-on-scroll">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="pricing" id="pricing">
+        <div class="pricing-container">
+          <div class="section-header animate-on-scroll">
+            <div class="section-subtitle">Pricing</div>
+            <h2 class="section-title">Website Development Packages</h2>
+            <p class="section-description">
+              Choose the perfect package for your website project. All packages
+              include responsive design, modern UI, and professional
+              development.
+            </p>
+          </div>
+          <div class="pricing-grid">
+            <div class="pricing-card animate-on-scroll">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Starter Website</h3>
+                <p class="pricing-subtitle">Perfect for small businesses</p>
+              </div>
+              <div class="pricing-price">$27</div>
+              <div class="pricing-period">One-time payment</div>
+              <ul class="pricing-features">
+                <li>5 Pages Website</li>
+                <li>Responsive Design</li>
+                <li>Contact Form Integration</li>
+                <li>Basic SEO Optimization</li>
+                <li>Mobile-First Design</li>
+                <li>1 Month Free Support</li>
+                <li class="unavailable">E-commerce Features</li>
+                <li class="unavailable">Content Management System</li>
+              </ul>
+              <button class="pricing-button" onclick="showOrderForm('starter')">
+                Get Started
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="pricing-card featured animate-on-scroll">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Business Website</h3>
+                <p class="pricing-subtitle">
+                  Most popular for growing businesses
+                </p>
+              </div>
+              <div class="pricing-price">$55</div>
+              <div class="pricing-period">One-time payment</div>
+              <ul class="pricing-features">
+                <li>10 Pages Website</li>
+                <li>Responsive Design</li>
+                <li>Advanced Contact Forms</li>
+                <li>SEO Optimization</li>
+                <li>Content Management System</li>
+                <li>3 Months Free Support</li>
+                <li>Basic E-commerce Setup</li>
+                <li>Performance Optimization</li>
+              </ul>
+              <button
+                class="pricing-button"
+                onclick="showOrderForm('business')"
+              >
+                Get Started
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+            <div class="pricing-card animate-on-scroll">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Enterprise Website</h3>
+                <p class="pricing-subtitle">For complex business needs</p>
+              </div>
+              <div class="pricing-price">$100</div>
+              <div class="pricing-period">One-time payment</div>
+              <ul class="pricing-features">
+                <li>Unlimited Pages</li>
+                <li>Custom Website Design</li>
+                <li>Advanced Forms & Features</li>
+                <li>Premium SEO Package</li>
+                <li>Full E-commerce Platform</li>
+                <li>6 Months Free Support</li>
+                <li>Custom Integrations</li>
+                <li>Performance & Security</li>
+              </ul>
+              <button
+                class="pricing-button"
+                onclick="showOrderForm('enterprise')"
+              >
+                Get Started
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about" id="about">
+        <div class="about-container">
+          <div class="about-content animate-on-scroll">
+            <h2>My Website Development Process</h2>
+            <p class="about-text">
+              I follow a proven methodology to deliver high-quality websites
+              that not only look great but also perform exceptionally. Every
+              website project starts with understanding your business goals and
+              target audience.
+            </p>
+            <p class="about-text">
+              From initial planning and design mockups to development and
+              deployment, I ensure every aspect of your website is crafted with
+              attention to detail, modern best practices, and user experience in
+              mind.
+            </p>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <div class="skill-percentage">95%</div>
+                <div class="skill-name">Frontend Development</div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-percentage">90%</div>
+                <div class="skill-name">Responsive Design</div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-percentage">88%</div>
+                <div class="skill-name">E-commerce Development</div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-percentage">92%</div>
+                <div class="skill-name">Website Optimization</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-image animate-on-scroll">
+            <div class="about-image-container">
+              <div class="about-image-inner">
+                <img src="Gambar.png" alt="Website Development Process" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section class="portfolio" id="portfolio">
+        <div class="portfolio-container">
+          <div class="section-header animate-on-scroll">
+            <div class="section-subtitle">My Work</div>
+            <h2 class="section-title">Recent Website Projects</h2>
+            <p class="section-description">
+              Explore my latest website development projects showcasing modern
+              design, functionality, and professional development for various
+              industries.
+            </p>
+          </div>
+          <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">
+              All Websites
+            </button>
+            <button class="filter-btn" data-filter="business">
+              Business Sites
+            </button>
+            <button class="filter-btn" data-filter="ecommerce">
+              E-commerce
+            </button>
+            <button class="filter-btn" data-filter="portfolio">
+              Portfolio Sites
+            </button>
+          </div>
+          <div class="portfolio-grid">
+            <div
+              class="portfolio-item animate-on-scroll"
+              data-category="ecommerce"
+            >
+              <div
+                class="portfolio-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div class="portfolio-overlay">
+                  <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">Fashion E-commerce Website</h3>
+                <div class="portfolio-category">E-commerce</div>
+                <p class="portfolio-description">
+                  Modern e-commerce website with advanced product catalog,
+                  shopping cart, payment integration, and customer dashboard for
+                  fashion retail business.
+                </p>
+                <div class="portfolio-tags">
+                  <span class="portfolio-tag">E-commerce</span>
+                  <span class="portfolio-tag">Payment Gateway</span>
+                  <span class="portfolio-tag">Responsive</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="portfolio-item animate-on-scroll"
+              data-category="business"
+            >
+              <div
+                class="portfolio-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div class="portfolio-overlay">
+                  <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">Corporate Business Website</h3>
+                <div class="portfolio-category">Business Site</div>
+                <p class="portfolio-description">
+                  Professional corporate website with company information,
+                  services showcase, team profiles, and contact forms for a
+                  consulting firm.
+                </p>
+                <div class="portfolio-tags">
+                  <span class="portfolio-tag">Corporate</span>
+                  <span class="portfolio-tag">Professional</span>
+                  <span class="portfolio-tag">CMS</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="portfolio-item animate-on-scroll"
+              data-category="portfolio"
+            >
+              <div
+                class="portfolio-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div class="portfolio-overlay">
+                  <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">Creative Portfolio Website</h3>
+                <div class="portfolio-category">Portfolio Site</div>
+                <p class="portfolio-description">
+                  Stunning portfolio website for a creative designer showcasing
+                  work samples, project details, client testimonials, and
+                  contact information.
+                </p>
+                <div class="portfolio-tags">
+                  <span class="portfolio-tag">Portfolio</span>
+                  <span class="portfolio-tag">Creative</span>
+                  <span class="portfolio-tag">Gallery</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="portfolio-item animate-on-scroll"
+              data-category="business"
+            >
+              <div
+                class="portfolio-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div class="portfolio-overlay">
+                  <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">Restaurant Website</h3>
+                <div class="portfolio-category">Business Site</div>
+                <p class="portfolio-description">
+                  Appetizing restaurant website featuring menu display, online
+                  reservations, location information, and customer reviews
+                  system.
+                </p>
+                <div class="portfolio-tags">
+                  <span class="portfolio-tag">Restaurant</span>
+                  <span class="portfolio-tag">Booking</span>
+                  <span class="portfolio-tag">Menu</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="portfolio-item animate-on-scroll"
+              data-category="ecommerce"
+            >
+              <div
+                class="portfolio-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div class="portfolio-overlay">
+                  <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">Electronics Store Website</h3>
+                <div class="portfolio-category">E-commerce</div>
+                <p class="portfolio-description">
+                  Comprehensive e-commerce platform for electronics with product
+                  comparison, specifications, customer reviews, and secure
+                  checkout process.
+                </p>
+                <div class="portfolio-tags">
+                  <span class="portfolio-tag">Electronics</span>
+                  <span class="portfolio-tag">Comparison</span>
+                  <span class="portfolio-tag">Reviews</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="portfolio-item animate-on-scroll"
+              data-category="business"
+            >
+              <div
+                class="portfolio-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <div class="portfolio-overlay">
+                  <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">Healthcare Clinic Website</h3>
+                <div class="portfolio-category">Business Site</div>
+                <p class="portfolio-description">
+                  Professional healthcare website with appointment booking,
+                  doctor profiles, services information, and patient portal
+                  integration.
+                </p>
+                <div class="portfolio-tags">
+                  <span class="portfolio-tag">Healthcare</span>
+                  <span class="portfolio-tag">Appointments</span>
+                  <span class="portfolio-tag">Portal</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-      <div class="stats-container">
-        <div class="stat-item animate-on-scroll">
-          <div class="stat-number">200+</div>
-          <div class="stat-label">Websites Built</div>
-        </div>
-        <div class="stat-item animate-on-scroll">
-          <div class="stat-number">150+</div>
-          <div class="stat-label">Happy Clients</div>
-        </div>
-        <div class="stat-item animate-on-scroll">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item animate-on-scroll">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Client Satisfaction</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-      <div class="pricing-container">
-        <div class="section-header animate-on-scroll">
-          <div class="section-subtitle">Pricing</div>
-          <h2 class="section-title">Website Development Packages</h2>
-          <p class="section-description">
-            Choose the perfect package for your website project. All packages
-            include responsive design, modern UI, and professional development.
-          </p>
-        </div>
-        <div class="pricing-grid">
-          <div class="pricing-card animate-on-scroll">
-            <div class="pricing-header">
-              <h3 class="pricing-title">Starter Website</h3>
-              <p class="pricing-subtitle">Perfect for small businesses</p>
-            </div>
-            <div class="pricing-price">$27</div>
-            <div class="pricing-period">One-time payment</div>
-            <ul class="pricing-features">
-              <li>5 Pages Website</li>
-              <li>Responsive Design</li>
-              <li>Contact Form Integration</li>
-              <li>Basic SEO Optimization</li>
-              <li>Mobile-First Design</li>
-              <li>1 Month Free Support</li>
-              <li class="unavailable">E-commerce Features</li>
-              <li class="unavailable">Content Management System</li>
-            </ul>
-            <a href="#contact" class="pricing-button">
-              Get Started
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="pricing-card featured animate-on-scroll">
-            <div class="pricing-header">
-              <h3 class="pricing-title">Business Website</h3>
-              <p class="pricing-subtitle">
-                Most popular for growing businesses
-              </p>
-            </div>
-            <div class="pricing-price">$55</div>
-            <div class="pricing-period">One-time payment</div>
-            <ul class="pricing-features">
-              <li>10 Pages Website</li>
-              <li>Responsive Design</li>
-              <li>Advanced Contact Forms</li>
-              <li>SEO Optimization</li>
-              <li>Content Management System</li>
-              <li>3 Months Free Support</li>
-              <li>Basic E-commerce Setup</li>
-              <li>Performance Optimization</li>
-            </ul>
-            <a href="#contact" class="pricing-button">
-              Get Started
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="pricing-card animate-on-scroll">
-            <div class="pricing-header">
-              <h3 class="pricing-title">Enterprise Website</h3>
-              <p class="pricing-subtitle">For complex business needs</p>
-            </div>
-            <div class="pricing-price">$100</div>
-            <div class="pricing-period">One-time payment</div>
-            <ul class="pricing-features">
-              <li>Unlimited Pages</li>
-              <li>Custom Website Design</li>
-              <li>Advanced Forms & Features</li>
-              <li>Premium SEO Package</li>
-              <li>Full E-commerce Platform</li>
-              <li>6 Months Free Support</li>
-              <li>Custom Integrations</li>
-              <li>Performance & Security</li>
-            </ul>
-            <a href="#contact" class="pricing-button">
-              Get Started
-              <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="about-container">
-        <div class="about-content animate-on-scroll">
-          <h2>My Website Development Process</h2>
-          <p class="about-text">
-            I follow a proven methodology to deliver high-quality websites that
-            not only look great but also perform exceptionally. Every website
-            project starts with understanding your business goals and target
-            audience.
-          </p>
-          <p class="about-text">
-            From initial planning and design mockups to development and
-            deployment, I ensure every aspect of your website is crafted with
-            attention to detail, modern best practices, and user experience in
-            mind.
-          </p>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-percentage">95%</div>
-              <div class="skill-name">Frontend Development</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-percentage">90%</div>
-              <div class="skill-name">Responsive Design</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-percentage">88%</div>
-              <div class="skill-name">E-commerce Development</div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-percentage">92%</div>
-              <div class="skill-name">Website Optimization</div>
-            </div>
-          </div>
-        </div>
-        <div class="about-image animate-on-scroll">
-          <div class="about-image-container">
-            <div class="about-image-inner">
-              <img src="Gambar.png" alt="Website Development Process" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-      <div class="portfolio-container">
-        <div class="section-header animate-on-scroll">
-          <div class="section-subtitle">My Work</div>
-          <h2 class="section-title">Recent Website Projects</h2>
-          <p class="section-description">
-            Explore my latest website development projects showcasing modern
-            design, functionality, and professional development for various
-            industries.
-          </p>
-        </div>
-        <div class="portfolio-filters">
-          <button class="filter-btn active" data-filter="all">
-            All Websites
-          </button>
-          <button class="filter-btn" data-filter="business">
-            Business Sites
-          </button>
-          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-          <button class="filter-btn" data-filter="portfolio">
-            Portfolio Sites
-          </button>
-        </div>
-        <div class="portfolio-grid">
-          <div
-            class="portfolio-item animate-on-scroll"
-            data-category="ecommerce"
-          >
-            <div
-              class="portfolio-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div class="portfolio-overlay">
-                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Fashion E-commerce Website</h3>
-              <div class="portfolio-category">E-commerce</div>
-              <p class="portfolio-description">
-                Modern e-commerce website with advanced product catalog,
-                shopping cart, payment integration, and customer dashboard for
-                fashion retail business.
-              </p>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">E-commerce</span>
-                <span class="portfolio-tag">Payment Gateway</span>
-                <span class="portfolio-tag">Responsive</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="portfolio-item animate-on-scroll"
-            data-category="business"
-          >
-            <div
-              class="portfolio-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div class="portfolio-overlay">
-                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Corporate Business Website</h3>
-              <div class="portfolio-category">Business Site</div>
-              <p class="portfolio-description">
-                Professional corporate website with company information,
-                services showcase, team profiles, and contact forms for a
-                consulting firm.
-              </p>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">Corporate</span>
-                <span class="portfolio-tag">Professional</span>
-                <span class="portfolio-tag">CMS</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="portfolio-item animate-on-scroll"
-            data-category="portfolio"
-          >
-            <div
-              class="portfolio-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div class="portfolio-overlay">
-                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Creative Portfolio Website</h3>
-              <div class="portfolio-category">Portfolio Site</div>
-              <p class="portfolio-description">
-                Stunning portfolio website for a creative designer showcasing
-                work samples, project details, client testimonials, and contact
-                information.
-              </p>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">Portfolio</span>
-                <span class="portfolio-tag">Creative</span>
-                <span class="portfolio-tag">Gallery</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="portfolio-item animate-on-scroll"
-            data-category="business"
-          >
-            <div
-              class="portfolio-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div class="portfolio-overlay">
-                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Restaurant Website</h3>
-              <div class="portfolio-category">Business Site</div>
-              <p class="portfolio-description">
-                Appetizing restaurant website featuring menu display, online
-                reservations, location information, and customer reviews system.
-              </p>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">Restaurant</span>
-                <span class="portfolio-tag">Booking</span>
-                <span class="portfolio-tag">Menu</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="portfolio-item animate-on-scroll"
-            data-category="ecommerce"
-          >
-            <div
-              class="portfolio-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div class="portfolio-overlay">
-                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Electronics Store Website</h3>
-              <div class="portfolio-category">E-commerce</div>
-              <p class="portfolio-description">
-                Comprehensive e-commerce platform for electronics with product
-                comparison, specifications, customer reviews, and secure
-                checkout process.
-              </p>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">Electronics</span>
-                <span class="portfolio-tag">Comparison</span>
-                <span class="portfolio-tag">Reviews</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="portfolio-item animate-on-scroll"
-            data-category="business"
-          >
-            <div
-              class="portfolio-image"
-              style="
-                background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80');
-                background-size: cover;
-                background-position: center;
-              "
-            >
-              <div class="portfolio-overlay">
-                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Healthcare Clinic Website</h3>
-              <div class="portfolio-category">Business Site</div>
-              <p class="portfolio-description">
-                Professional healthcare website with appointment booking, doctor
-                profiles, services information, and patient portal integration.
-              </p>
-              <div class="portfolio-tags">
-                <span class="portfolio-tag">Healthcare</span>
-                <span class="portfolio-tag">Appointments</span>
-                <span class="portfolio-tag">Portal</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="contact-container">
-        <div class="section-header animate-on-scroll">
-          <div class="section-subtitle">Get In Touch</div>
-          <h2 class="section-title">Ready to Start Your Website Project?</h2>
-          <p class="section-description">
-            Let's discuss your website requirements and create a professional
-            online presence for your business. Get in touch today for a free
-            consultation.
-          </p>
-        </div>
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item animate-on-scroll">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Phone</h4>
-                <p>+62 819-0861-2547</p>
-              </div>
-            </div>
-            <div class="contact-item animate-on-scroll">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Email</h4>
-                <p>syauqiashif3@gmail.com</p>
-              </div>
-            </div>
-            <div class="contact-item animate-on-scroll">
-              <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Location</h4>
-                <p>Gadu Barat, Ganding, Sumenep</p>
-              </div>
-            </div>
-          </div>
-          <form class="contact-form animate-on-scroll">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div class="form-group">
-              <label for="subject">Website Type</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="e.g., Business Website, E-commerce, Portfolio"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label for="message">Project Details</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Tell me about your website project requirements..."
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="form-submit">
-              Send Website Inquiry
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>MS.Dev</h3>
-            <p>
-              Creating exceptional websites that help businesses succeed online.
-              Professional web development services with modern design and
-              functionality.
+      <!-- Contact Section -->
+      <section class="contact" id="contact">
+        <div class="contact-container">
+          <div class="section-header animate-on-scroll">
+            <div class="section-subtitle">Get In Touch</div>
+            <h2 class="section-title">Ready to Start Your Website Project?</h2>
+            <p class="section-description">
+              Let's discuss your website requirements and create a professional
+              online presence for your business. Get in touch today for a free
+              consultation.
             </p>
-            <div class="footer-social">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-              <a href="#"><i class="fab fa-dribbble"></i></a>
+          </div>
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-item animate-on-scroll">
+                <div class="contact-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Phone</h4>
+                  <p>+62 819-0861-2547</p>
+                </div>
+              </div>
+              <div class="contact-item animate-on-scroll">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Email</h4>
+                  <p>syauqiashif3@gmail.com</p>
+                </div>
+              </div>
+              <div class="contact-item animate-on-scroll">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                  <h4>Location</h4>
+                  <p>Gadu Barat, Ganding, Sumenep</p>
+                </div>
+              </div>
+            </div>
+            <form
+              class="contact-form animate-on-scroll"
+              id="general-contact-form"
+            >
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Website Type</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="e.g., Business Website, E-commerce, Portfolio"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Project Details</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about your website project requirements..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                Send Website Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comments Section -->
+      <section class="comments" id="comments">
+        <div class="comments-container">
+          <div class="section-header animate-on-scroll">
+            <div class="section-subtitle">Client Feedback</div>
+            <h2 class="section-title">What People Say About My Work</h2>
+            <p class="section-description">
+              Read testimonials and feedback from clients who have worked with
+              me on their website projects.
+            </p>
+          </div>
+          <div class="comments-content">
+            <div class="comments-form animate-on-scroll">
+              <h3
+                style="
+                  color: var(--text-primary);
+                  margin-bottom: 1.5rem;
+                  font-size: 1.2rem;
+                "
+              >
+                Leave Your Feedback
+              </h3>
+              <form id="comment-form">
+                <div class="form-group">
+                  <label for="comment-name">Your Name *</label>
+                  <input
+                    type="text"
+                    id="comment-name"
+                    name="name"
+                    required
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="comment-text">Your Comment *</label>
+                  <textarea
+                    id="comment-text"
+                    name="comment"
+                    required
+                    placeholder="Share your experience working with me..."
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button type="submit" class="comment-submit">
+                  <i
+                    class="fas fa-paper-plane"
+                    style="margin-right: 0.5rem"
+                  ></i>
+                  Post Comment
+                </button>
+              </form>
+            </div>
+
+            <div class="comments-display animate-on-scroll">
+              <div class="comments-stats">
+                <span class="total-comments">
+                  <i class="fas fa-comments comments-icon"></i>
+                  <span id="comment-count">3</span> Comments
+                </span>
+                <span style="color: var(--text-muted); font-size: 0.85rem"
+                  >Recent Feedback</span
+                >
+              </div>
+
+              <div id="comments-list">
+                <!-- Sample Comments -->
+                <div class="comment-item">
+                  <div class="comment-header">
+                    <span class="comment-author">bud***</span>
+                    <span class="comment-date">2 days ago</span>
+                  </div>
+                  <div class="comment-text">
+                    Excellent work! My business website looks amazing and loads
+                    super fast. The design is exactly what I wanted and the
+                    support was outstanding.
+                  </div>
+                </div>
+
+                <div class="comment-item">
+                  <div class="comment-header">
+                    <span class="comment-author">sar***</span>
+                    <span class="comment-date">1 week ago</span>
+                  </div>
+                  <div class="comment-text">
+                    Professional service from start to finish. The e-commerce
+                    features work perfectly and my customers love the new
+                    website. Highly recommended!
+                  </div>
+                </div>
+
+                <div class="comment-item">
+                  <div class="comment-header">
+                    <span class="comment-author">mic***</span>
+                    <span class="comment-date">2 weeks ago</span>
+                  </div>
+                  <div class="comment-text">
+                    Great communication throughout the project. Delivered on
+                    time and exceeded my expectations. The mobile design is
+                    perfect!
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#portfolio">Portfolio</a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>MS.Dev</h3>
+              <p>
+                Creating exceptional websites that help businesses succeed
+                online. Professional web development services with modern design
+                and functionality.
+              </p>
+              <div class="footer-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+              </div>
+            </div>
+            <div class="footer-section">
+              <h3>Quick Links</h3>
+              <span onclick="showPage('home')" style="cursor: pointer"
+                >Home</span
+              >
+              <span onclick="scrollToSection('about')" style="cursor: pointer"
+                >About</span
+              >
+              <span onclick="scrollToSection('pricing')" style="cursor: pointer"
+                >Pricing</span
+              >
+              <span
+                onclick="scrollToSection('portfolio')"
+                style="cursor: pointer"
+                >Portfolio</span
+              >
+              <span
+                onclick="scrollToSection('comments')"
+                style="cursor: pointer"
+                >Reviews</span
+              >
+            </div>
+            <div class="footer-section">
+              <h3>Website Services</h3>
+              <a href="#">Business Websites</a>
+              <a href="#">E-commerce Development</a>
+              <a href="#">Portfolio Sites</a>
+              <a href="#">Website Redesign</a>
+            </div>
+            <div class="footer-section">
+              <h3>Contact</h3>
+              <a href="tel:+6281908612547">+62 819-0861-2547</a>
+              <a href="mailto:syauqiashif3@gmail.com">syauqiashif3@gmail.com</a>
+              <p>Gadu Barat, Ganding, Sumenep</p>
+            </div>
           </div>
-          <div class="footer-section">
-            <h3>Website Services</h3>
-            <a href="#">Business Websites</a>
-            <a href="#">E-commerce Development</a>
-            <a href="#">Portfolio Sites</a>
-            <a href="#">Website Redesign</a>
-          </div>
-          <div class="footer-section">
-            <h3>Contact</h3>
-            <a href="tel:+6281908612547">+62 819-0861-2547</a>
-            <a href="mailto:syauqiashif3@gmail.com">syauqiashif3@gmail.com</a>
-            <p>Gadu Barat, Ganding, Sumenep</p>
+          <div class="footer-bottom">
+            <p>&copy; 2024 MS.Dev. All rights reserved</p>
           </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 MS.Dev. All rights reserved</p>
+      </footer>
+    </div>
+
+    <!-- Order Form Pages -->
+    <!-- Starter Package Order Form -->
+    <div class="page" id="starter-form-page">
+      <div class="form-page">
+        <div class="form-page-container">
+          <div class="form-page-header">
+            <h1 class="form-page-title">Order Starter Website Package</h1>
+            <p class="form-page-subtitle">
+              Let's get started with your professional website project
+            </p>
+          </div>
+
+          <div class="package-info">
+            <div class="package-name">Starter Website</div>
+            <div class="package-price">$27</div>
+            <div class="package-description">
+              Perfect for small businesses - 5 pages, responsive design, contact
+              forms, and basic SEO
+            </div>
+          </div>
+
+          <div class="form-card">
+            <form id="starter-order-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="starter-name">Full Name *</label>
+                  <input type="text" id="starter-name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="starter-email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="starter-email"
+                    name="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="starter-phone">Phone Number *</label>
+                  <input type="tel" id="starter-phone" name="phone" required />
+                </div>
+                <div class="form-group">
+                  <label for="starter-company">Company/Business Name</label>
+                  <input type="text" id="starter-company" name="company" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="starter-industry">Industry/Business Type *</label>
+                <select id="starter-industry" name="industry" required>
+                  <option value="">Select your industry</option>
+                  <option value="retail">Retail/E-commerce</option>
+                  <option value="restaurant">Restaurant/Food Service</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="education">Education</option>
+                  <option value="real-estate">Real Estate</option>
+                  <option value="consulting">Consulting</option>
+                  <option value="technology">Technology</option>
+                  <option value="finance">Finance</option>
+                  <option value="fitness">Fitness/Wellness</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="starter-pages"
+                  >Preferred 5 Pages for Your Website *</label
+                >
+                <textarea
+                  id="starter-pages"
+                  name="pages"
+                  placeholder="Example: Home, About Us, Services, Contact, Blog"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="starter-design">Design Preferences</label>
+                <textarea
+                  id="starter-design"
+                  name="design"
+                  placeholder="Describe your preferred colors, style, and any websites you like as inspiration"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="starter-timeline">Preferred Timeline *</label>
+                <select id="starter-timeline" name="timeline" required>
+                  <option value="">Select timeline</option>
+                  <option value="1-week">1 Week (Rush - Additional $10)</option>
+                  <option value="2-weeks">2 Weeks (Standard)</option>
+                  <option value="3-weeks">3 Weeks</option>
+                  <option value="1-month">1 Month</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="starter-additional">Additional Requirements</label>
+                <textarea
+                  id="starter-additional"
+                  name="additional"
+                  placeholder="Any specific features, integrations, or special requirements for your website"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="form-submit">
+                Send Order to WhatsApp
+              </button>
+            </form>
+
+            <div class="additional-info">
+              <h4>What's Included in Starter Package:</h4>
+              <p>
+                • 5 Pages Website • Responsive Design • Contact Form Integration
+                • Basic SEO Optimization • Mobile-First Design • 1 Month Free
+                Support
+              </p>
+              <br />
+              <h4>🔐 Order Security:</h4>
+              <p>
+                Each order generates a unique password (format: Ms-Dev-xxxxx)
+                for secure order tracking and verification.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
+
+    <!-- Business Package Order Form -->
+    <div class="page" id="business-form-page">
+      <div class="form-page">
+        <div class="form-page-container">
+          <div class="form-page-header">
+            <h1 class="form-page-title">Order Business Website Package</h1>
+            <p class="form-page-subtitle">
+              Most popular choice for growing businesses
+            </p>
+          </div>
+
+          <div class="package-info">
+            <div class="package-name">Business Website</div>
+            <div class="package-price">$55</div>
+            <div class="package-description">
+              Professional business solution - 10 pages, CMS, e-commerce ready,
+              and advanced features
+            </div>
+          </div>
+
+          <div class="form-card">
+            <form id="business-order-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="business-name">Full Name *</label>
+                  <input type="text" id="business-name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="business-email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="business-email"
+                    name="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="business-phone">Phone Number *</label>
+                  <input type="tel" id="business-phone" name="phone" required />
+                </div>
+                <div class="form-group">
+                  <label for="business-company">Company/Business Name *</label>
+                  <input
+                    type="text"
+                    id="business-company"
+                    name="company"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="business-industry">Industry/Business Type *</label>
+                <select id="business-industry" name="industry" required>
+                  <option value="">Select your industry</option>
+                  <option value="retail">Retail/E-commerce</option>
+                  <option value="restaurant">Restaurant/Food Service</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="education">Education</option>
+                  <option value="real-estate">Real Estate</option>
+                  <option value="consulting">Consulting</option>
+                  <option value="technology">Technology</option>
+                  <option value="finance">Finance</option>
+                  <option value="fitness">Fitness/Wellness</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="business-pages"
+                  >Required Pages for Your Website *</label
+                >
+                <textarea
+                  id="business-pages"
+                  name="pages"
+                  placeholder="List up to 10 pages you need (e.g., Home, About, Services, Products, Team, Blog, Contact, etc.)"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="business-ecommerce">E-commerce Requirements</label>
+                <select id="business-ecommerce" name="ecommerce">
+                  <option value="none">No e-commerce needed</option>
+                  <option value="basic">Basic product showcase</option>
+                  <option value="simple">
+                    Simple online store (up to 20 products)
+                  </option>
+                  <option value="advanced">
+                    Full e-commerce with payment gateway
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="business-cms">Content Management Preferences</label>
+                <select id="business-cms" name="cms">
+                  <option value="wordpress">WordPress CMS (Recommended)</option>
+                  <option value="custom">Custom Admin Panel</option>
+                  <option value="none">No CMS needed</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="business-design"
+                  >Design Preferences & Branding</label
+                >
+                <textarea
+                  id="business-design"
+                  name="design"
+                  placeholder="Describe your brand colors, style preferences, target audience, and any inspiration websites"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="business-features">Special Features Required</label>
+                <textarea
+                  id="business-features"
+                  name="features"
+                  placeholder="e.g., Appointment booking, Member login, Newsletter signup, Social media integration, etc."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="business-timeline">Preferred Timeline *</label>
+                <select id="business-timeline" name="timeline" required>
+                  <option value="">Select timeline</option>
+                  <option value="1-week">1 Week (Rush - Additional $20)</option>
+                  <option value="2-weeks">2 Weeks (Standard)</option>
+                  <option value="3-weeks">3 Weeks</option>
+                  <option value="1-month">1 Month</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="business-additional">Additional Requirements</label>
+                <textarea
+                  id="business-additional"
+                  name="additional"
+                  placeholder="Any other specific requirements, third-party integrations, or special functionality needed"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="form-submit">
+                Send Order to WhatsApp
+              </button>
+            </form>
+
+            <div class="additional-info">
+              <h4>What's Included in Business Package:</h4>
+              <p>
+                • 10 Pages Website • Responsive Design • Advanced Contact Forms
+                • SEO Optimization • Content Management System • 3 Months Free
+                Support • Basic E-commerce Setup • Performance Optimization
+              </p>
+              <br />
+              <h4>🔐 Order Security:</h4>
+              <p>
+                Each order generates a unique password (format: Ms-Dev-xxxxx)
+                for secure order tracking and verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enterprise Package Order Form -->
+    <div class="page" id="enterprise-form-page">
+      <div class="form-page">
+        <div class="form-page-container">
+          <div class="form-page-header">
+            <h1 class="form-page-title">Order Enterprise Website Package</h1>
+            <p class="form-page-subtitle">
+              Complete solution for complex business needs
+            </p>
+          </div>
+
+          <div class="package-info">
+            <div class="package-name">Enterprise Website</div>
+            <div class="package-price">$100</div>
+            <div class="package-description">
+              Ultimate package - Unlimited pages, custom design, full
+              e-commerce, and advanced integrations
+            </div>
+          </div>
+
+          <div class="form-card">
+            <form id="enterprise-order-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="enterprise-name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="enterprise-name"
+                    name="name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="enterprise-email">Business Email *</label>
+                  <input
+                    type="email"
+                    id="enterprise-email"
+                    name="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="enterprise-phone">Phone Number *</label>
+                  <input
+                    type="tel"
+                    id="enterprise-phone"
+                    name="phone"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="enterprise-company"
+                    >Company/Organization Name *</label
+                  >
+                  <input
+                    type="text"
+                    id="enterprise-company"
+                    name="company"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="enterprise-industry"
+                    >Industry/Business Type *</label
+                  >
+                  <select id="enterprise-industry" name="industry" required>
+                    <option value="">Select your industry</option>
+                    <option value="retail">Retail/E-commerce</option>
+                    <option value="restaurant">Restaurant/Food Service</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="education">Education</option>
+                    <option value="real-estate">Real Estate</option>
+                    <option value="consulting">Consulting</option>
+                    <option value="technology">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="fitness">Fitness/Wellness</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="government">Government/Non-profit</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="enterprise-size">Company Size</label>
+                  <select id="enterprise-size" name="size">
+                    <option value="">Select company size</option>
+                    <option value="startup">Startup (1-10 employees)</option>
+                    <option value="small">Small (11-50 employees)</option>
+                    <option value="medium">Medium (51-200 employees)</option>
+                    <option value="large">Large (200+ employees)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-pages"
+                  >Website Structure & Pages *</label
+                >
+                <textarea
+                  id="enterprise-pages"
+                  name="pages"
+                  placeholder="Describe your complete website structure including main pages, sub-pages, and any special sections needed"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-ecommerce"
+                  >E-commerce Requirements *</label
+                >
+                <select id="enterprise-ecommerce" name="ecommerce" required>
+                  <option value="">Select e-commerce level</option>
+                  <option value="none">No e-commerce needed</option>
+                  <option value="catalog">Product catalog only</option>
+                  <option value="basic">Basic online store</option>
+                  <option value="advanced">
+                    Advanced e-commerce with inventory
+                  </option>
+                  <option value="marketplace">Multi-vendor marketplace</option>
+                  <option value="custom">Custom e-commerce solution</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-features"
+                  >Required Features & Functionality *</label
+                >
+                <textarea
+                  id="enterprise-features"
+                  name="features"
+                  placeholder="List all required features: user accounts, payment gateways, booking systems, API integrations, multi-language support, etc."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-integrations"
+                  >Third-party Integrations</label
+                >
+                <textarea
+                  id="enterprise-integrations"
+                  name="integrations"
+                  placeholder="CRM systems, payment processors, analytics tools, marketing platforms, etc."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-design"
+                  >Custom Design Requirements *</label
+                >
+                <textarea
+                  id="enterprise-design"
+                  name="design"
+                  placeholder="Detailed description of your brand guidelines, design preferences, user experience requirements, and any existing brand assets"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="enterprise-users">Expected User Base</label>
+                  <select id="enterprise-users" name="users">
+                    <option value="">Select expected users</option>
+                    <option value="small">Under 1,000 users</option>
+                    <option value="medium">1,000 - 10,000 users</option>
+                    <option value="large">10,000 - 100,000 users</option>
+                    <option value="enterprise">100,000+ users</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="enterprise-timeline">Preferred Timeline *</label>
+                  <select id="enterprise-timeline" name="timeline" required>
+                    <option value="">Select timeline</option>
+                    <option value="2-weeks">
+                      2 Weeks (Rush - Additional $50)
+                    </option>
+                    <option value="3-weeks">3 Weeks</option>
+                    <option value="1-month">1 Month (Standard)</option>
+                    <option value="6-weeks">6 Weeks</option>
+                    <option value="2-months">2 Months</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-security"
+                  >Security & Compliance Requirements</label
+                >
+                <textarea
+                  id="enterprise-security"
+                  name="security"
+                  placeholder="SSL certificates, GDPR compliance, data protection, user privacy, etc."
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-hosting"
+                  >Hosting & Domain Preferences</label
+                >
+                <select id="enterprise-hosting" name="hosting">
+                  <option value="">Select hosting preference</option>
+                  <option value="shared">Shared hosting (included)</option>
+                  <option value="vps">VPS hosting (+$10/month)</option>
+                  <option value="dedicated">
+                    Dedicated server (+$30/month)
+                  </option>
+                  <option value="cloud">Cloud hosting (+$20/month)</option>
+                  <option value="existing">Use existing hosting</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-budget"
+                  >Additional Budget Information</label
+                >
+                <textarea
+                  id="enterprise-budget"
+                  name="budget"
+                  placeholder="Any specific budget considerations, ongoing maintenance budget, or additional services needed"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="enterprise-additional"
+                  >Additional Requirements & Notes</label
+                >
+                <textarea
+                  id="enterprise-additional"
+                  name="additional"
+                  placeholder="Any other specific requirements, technical specifications, or important details for your project"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="form-submit">
+                Send Enterprise Order to WhatsApp
+              </button>
+            </form>
+
+            <div class="additional-info">
+              <h4>What's Included in Enterprise Package:</h4>
+              <p>
+                • Unlimited Pages • Custom Website Design • Advanced Forms &
+                Features • Premium SEO Package • Full E-commerce Platform • 6
+                Months Free Support • Custom Integrations • Performance &
+                Security Optimization
+              </p>
+              <br />
+              <h4>🔐 Order Security:</h4>
+              <p>
+                Each order generates a unique password (format: Ms-Dev-xxxxx)
+                for secure order tracking and verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
+      // Package data
+      const packages = {
+        starter: {
+          name: "Starter Website",
+          price: "$27",
+          description: "Perfect for small businesses",
+        },
+        business: {
+          name: "Business Website",
+          price: "$55",
+          description: "Most popular for growing businesses",
+        },
+        enterprise: {
+          name: "Enterprise Website",
+          price: "$100",
+          description: "For complex business needs",
+        },
+      };
+
+      // Page management
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Show target page
+        if (pageId === "home") {
+          document.getElementById("home-page").classList.add("active");
+          updateNavLinks("home");
+        } else {
+          document.getElementById(pageId).classList.add("active");
+        }
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      function showOrderForm(packageType) {
+        const pageId = packageType + "-form-page";
+        showPage(pageId);
+      }
+
+      function scrollToSection(sectionId) {
+        // Make sure we're on the home page first
+        showPage("home");
+
+        setTimeout(() => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+            updateNavLinks(sectionId);
+          }
+        }, 100);
+      }
+
+      function updateNavLinks(activeSection) {
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        // Find and activate the correct nav link
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+          const linkText = link.textContent.toLowerCase();
+          if (
+            (activeSection === "home" && linkText === "home") ||
+            (activeSection === "pricing" && linkText === "pricing") ||
+            (activeSection === "about" && linkText === "about") ||
+            (activeSection === "portfolio" && linkText === "projects") ||
+            (activeSection === "comments" && linkText === "reviews") ||
+            (activeSection === "contact" && linkText === "contact")
+          ) {
+            link.classList.add("active");
+          }
+        });
+      }
+
       // Loading Screen
       window.addEventListener("load", function () {
         const loading = document.getElementById("loading");
@@ -2338,11 +3402,9 @@
       // Mobile Navigation Toggle
       const navToggle = document.getElementById("nav-toggle");
       const navMenu = document.getElementById("nav-menu");
-      const mobileOverlay = document.getElementById("mobile-overlay");
 
       function toggleMobileMenu() {
         navMenu.classList.toggle("active");
-        mobileOverlay.classList.toggle("active");
         const icon = navToggle.querySelector("i");
 
         if (navMenu.classList.contains("active")) {
@@ -2358,7 +3420,6 @@
 
       function closeMobileMenu() {
         navMenu.classList.remove("active");
-        mobileOverlay.classList.remove("active");
         const icon = navToggle.querySelector("i");
         icon.classList.remove("fa-times");
         icon.classList.add("fa-bars");
@@ -2372,9 +3433,6 @@
         link.addEventListener("click", closeMobileMenu);
       });
 
-      // Close mobile menu when clicking on overlay
-      mobileOverlay.addEventListener("click", closeMobileMenu);
-
       // Handle window resize
       window.addEventListener("resize", function () {
         if (window.innerWidth > 768 && navMenu.classList.contains("active")) {
@@ -2382,8 +3440,14 @@
         }
       });
 
-      // Active Navigation Link
+      // Active Navigation Link on Scroll (only for home page)
       window.addEventListener("scroll", function () {
+        if (
+          !document.getElementById("home-page").classList.contains("active")
+        ) {
+          return; // Don't update nav on form pages
+        }
+
         const sections = document.querySelectorAll("section");
         const navLinks = document.querySelectorAll(".nav-link");
 
@@ -2398,24 +3462,12 @@
 
         navLinks.forEach((link) => {
           link.classList.remove("active");
-          if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-          }
         });
-      });
 
-      // Smooth Scrolling for Navigation Links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
+        // Update active nav link based on current section
+        if (current) {
+          updateNavLinks(current);
+        }
       });
 
       // Portfolio Filter
@@ -2424,9 +3476,7 @@
 
       filterBtns.forEach((btn) => {
         btn.addEventListener("click", function () {
-          // Remove active class from all buttons
           filterBtns.forEach((b) => b.classList.remove("active"));
-          // Add active class to clicked button
           this.classList.add("active");
 
           const filter = this.getAttribute("data-filter");
@@ -2470,80 +3520,475 @@
         observer.observe(el);
       });
 
-      // Contact Form Submission - WhatsApp Redirect
+      // Password generator function
+      function generatePassword() {
+        const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+        let randomPart = "";
+        for (let i = 0; i < 5; i++) {
+          randomPart += characters.charAt(
+            Math.floor(Math.random() * characters.length)
+          );
+        }
+        return `Ms-Dev-${randomPart}`;
+      }
+
+      // Form submission functions
+      function createWhatsAppMessage(packageType, formData) {
+        const pkg = packages[packageType];
+        const generatedPassword = generatePassword();
+
+        let message = `🌐 *Website Order - ${pkg.name}*\n`;
+        message += `💰 *Package Price:* ${pkg.price}\n`;
+        message += `🔐 *Order Password:* ${generatedPassword}\n\n`;
+
+        message += `👤 *Client Information:*\n`;
+        message += `• Name: ${formData.get("name") || "Not provided"}\n`;
+        message += `• Email: ${formData.get("email") || "Not provided"}\n`;
+        message += `• Phone: ${formData.get("phone") || "Not provided"}\n`;
+
+        if (formData.get("company") && formData.get("company").trim()) {
+          message += `• Company: ${formData.get("company")}\n`;
+        }
+
+        message += `• Industry: ${
+          formData.get("industry") || "Not specified"
+        }\n\n`;
+
+        message += `📋 *Project Details:*\n`;
+
+        if (formData.get("pages") && formData.get("pages").trim()) {
+          message += `• Pages Needed: ${formData.get("pages")}\n`;
+        }
+
+        if (formData.get("ecommerce") && formData.get("ecommerce").trim()) {
+          message += `• E-commerce Level: ${formData.get("ecommerce")}\n`;
+        }
+
+        if (formData.get("cms") && formData.get("cms").trim()) {
+          message += `• CMS Preference: ${formData.get("cms")}\n`;
+        }
+
+        if (formData.get("design") && formData.get("design").trim()) {
+          message += `• Design Requirements: ${formData.get("design")}\n`;
+        }
+
+        if (formData.get("features") && formData.get("features").trim()) {
+          message += `• Special Features: ${formData.get("features")}\n`;
+        }
+
+        if (
+          formData.get("integrations") &&
+          formData.get("integrations").trim()
+        ) {
+          message += `• Third-party Integrations: ${formData.get(
+            "integrations"
+          )}\n`;
+        }
+
+        if (formData.get("timeline") && formData.get("timeline").trim()) {
+          message += `• Preferred Timeline: ${formData.get("timeline")}\n`;
+        }
+
+        if (formData.get("users") && formData.get("users").trim()) {
+          message += `• Expected Users: ${formData.get("users")}\n`;
+        }
+
+        if (formData.get("security") && formData.get("security").trim()) {
+          message += `• Security Requirements: ${formData.get("security")}\n`;
+        }
+
+        if (formData.get("hosting") && formData.get("hosting").trim()) {
+          message += `• Hosting Preference: ${formData.get("hosting")}\n`;
+        }
+
+        if (formData.get("budget") && formData.get("budget").trim()) {
+          message += `• Budget Information: ${formData.get("budget")}\n`;
+        }
+
+        if (formData.get("additional") && formData.get("additional").trim()) {
+          message += `• Additional Notes: ${formData.get("additional")}\n`;
+        }
+
+        message += `\n---\n📅 *Order Date:* ${new Date().toLocaleDateString()}\n`;
+        message += `🔐 *Reference ID:* ${generatedPassword}\n`;
+        message += `📱 *Sent from:* Portfolio Website`;
+
+        return message;
+      }
+
+      // Comments System
+      let comments = [
+        {
+          id: 1,
+          name: "bud***",
+          originalName: "budget",
+          comment:
+            "Excellent work! My business website looks amazing and loads super fast. The design is exactly what I wanted and the support was outstanding.",
+          date: "2 days ago",
+        },
+        {
+          id: 2,
+          name: "sar***",
+          originalName: "sarah",
+          comment:
+            "Professional service from start to finish. The e-commerce features work perfectly and my customers love the new website. Highly recommended!",
+          date: "1 week ago",
+        },
+        {
+          id: 3,
+          name: "mic***",
+          originalName: "michael",
+          comment:
+            "Great communication throughout the project. Delivered on time and exceeded my expectations. The mobile design is perfect!",
+          date: "2 weeks ago",
+        },
+      ];
+
+      // Function to mask name (first 3 characters + ***)
+      function maskName(name) {
+        if (name.length <= 3) {
+          return name + "***";
+        }
+        return name.substring(0, 3).toLowerCase() + "***";
+      }
+
+      // Function to get relative time
+      function getRelativeTime(date) {
+        return "just now";
+      }
+
+      // Function to render comments
+      function renderComments() {
+        const commentsList = document.getElementById("comments-list");
+        const commentCount = document.getElementById("comment-count");
+
+        if (!commentsList || !commentCount) return;
+
+        // Update comment count
+        commentCount.textContent = comments.length;
+
+        // Clear and render comments
+        commentsList.innerHTML = "";
+
+        if (comments.length === 0) {
+          commentsList.innerHTML = `
+            <div class="no-comments">
+              <i class="fas fa-comment-slash" style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-muted);"></i>
+              <p>No comments yet. Be the first to share your feedback!</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Sort comments by newest first
+        const sortedComments = [...comments].reverse();
+
+        sortedComments.forEach((comment) => {
+          const commentElement = document.createElement("div");
+          commentElement.className = "comment-item";
+          commentElement.innerHTML = `
+            <div class="comment-header">
+              <span class="comment-author">${comment.name}</span>
+              <span class="comment-date">${comment.date}</span>
+            </div>
+            <div class="comment-text">${comment.comment}</div>
+          `;
+          commentsList.appendChild(commentElement);
+        });
+      }
+
+      // Function to add new comment
+      function addComment(name, comment) {
+        const maskedName = maskName(name);
+        const newComment = {
+          id: comments.length + 1,
+          name: maskedName,
+          originalName: name.toLowerCase(),
+          comment: comment,
+          date: getRelativeTime(new Date()),
+        };
+
+        comments.push(newComment);
+        renderComments();
+
+        // Scroll to comments section
+        document.getElementById("comments").scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      // Initialize comments when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Render initial comments
+        renderComments();
+
+        // Handle comment form submission
+        const commentForm = document.getElementById("comment-form");
+        if (commentForm) {
+          commentForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const name = formData.get("name");
+            const comment = formData.get("comment");
+
+            // Validation
+            if (!name || !comment) {
+              alert("Please fill in both name and comment fields.");
+              return;
+            }
+
+            if (name.trim().length < 2) {
+              alert("Name must be at least 2 characters long.");
+              return;
+            }
+
+            if (comment.trim().length < 10) {
+              alert("Comment must be at least 10 characters long.");
+              return;
+            }
+
+            // Add comment
+            addComment(name.trim(), comment.trim());
+
+            // Reset form
+            this.reset();
+
+            // Show success message
+            const maskedName = maskName(name.trim());
+            alert(
+              `Thank you ${maskedName}! Your comment has been posted successfully.`
+            );
+
+            // Add animation to new comment
+            setTimeout(() => {
+              const newComment = document.querySelector(
+                ".comment-item:first-child"
+              );
+              if (newComment) {
+                newComment.style.background = "rgba(139, 92, 246, 0.1)";
+                newComment.style.borderColor = "var(--accent-purple)";
+                setTimeout(() => {
+                  newComment.style.background = "";
+                  newComment.style.borderColor = "";
+                }, 3000);
+              }
+            }, 100);
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Starter form submission
+        const starterForm = document.getElementById("starter-order-form");
+        if (starterForm) {
+          starterForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            console.log("Starter form submitted");
+
+            const formData = new FormData(this);
+
+            // Debug: Log form data
+            for (let [key, value] of formData.entries()) {
+              console.log(key, value);
+            }
+
+            // Basic validation
+            const requiredFields = this.querySelectorAll("[required]");
+            let isValid = true;
+
+            requiredFields.forEach((field) => {
+              if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = "#ef4444";
+                console.log("Missing required field:", field.name);
+              } else {
+                field.style.borderColor = "";
+              }
+            });
+
+            if (!isValid) {
+              alert("Please fill in all required fields marked with *");
+              return;
+            }
+
+            // Create WhatsApp message
+            const message = createWhatsAppMessage("starter", formData);
+            const orderPassword = message.match(
+              /🔐 \*Order Password:\* (Ms-Dev-[a-z0-9]+)/
+            )[1];
+            console.log("WhatsApp message:", message);
+
+            const whatsappNumber = "6281908612547";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+              message
+            )}`;
+
+            // Open WhatsApp
+            window.open(whatsappURL, "_blank");
+
+            // Show success message with password
+            alert(
+              `Thank you! Your Starter Website order has been prepared.\n\nYour Order Password: ${orderPassword}\n\nPlease send the message in WhatsApp to complete your order.`
+            );
+
+            // Reset form
+            this.reset();
+          });
+        }
+
+        // Business form submission
+        const businessForm = document.getElementById("business-order-form");
+        if (businessForm) {
+          businessForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            console.log("Business form submitted");
+
+            const formData = new FormData(this);
+
+            // Debug: Log form data
+            for (let [key, value] of formData.entries()) {
+              console.log(key, value);
+            }
+
+            // Basic validation
+            const requiredFields = this.querySelectorAll("[required]");
+            let isValid = true;
+
+            requiredFields.forEach((field) => {
+              if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = "#ef4444";
+                console.log("Missing required field:", field.name);
+              } else {
+                field.style.borderColor = "";
+              }
+            });
+
+            if (!isValid) {
+              alert("Please fill in all required fields marked with *");
+              return;
+            }
+
+            // Create WhatsApp message
+            const message = createWhatsAppMessage("business", formData);
+            const orderPassword = message.match(
+              /🔐 \*Order Password:\* (Ms-Dev-[a-z0-9]+)/
+            )[1];
+            console.log("WhatsApp message:", message);
+
+            const whatsappNumber = "6281908612547";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+              message
+            )}`;
+
+            // Open WhatsApp
+            window.open(whatsappURL, "_blank");
+
+            // Show success message with password
+            alert(
+              `Thank you! Your Business Website order has been prepared.\n\nYour Order Password: ${orderPassword}\n\nPlease send the message in WhatsApp to complete your order.`
+            );
+
+            // Reset form
+            this.reset();
+          });
+        }
+
+        // Enterprise form submission
+        const enterpriseForm = document.getElementById("enterprise-order-form");
+        if (enterpriseForm) {
+          enterpriseForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            console.log("Enterprise form submitted");
+
+            const formData = new FormData(this);
+
+            // Debug: Log form data
+            for (let [key, value] of formData.entries()) {
+              console.log(key, value);
+            }
+
+            // Basic validation
+            const requiredFields = this.querySelectorAll("[required]");
+            let isValid = true;
+
+            requiredFields.forEach((field) => {
+              if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = "#ef4444";
+                console.log("Missing required field:", field.name);
+              } else {
+                field.style.borderColor = "";
+              }
+            });
+
+            if (!isValid) {
+              alert("Please fill in all required fields marked with *");
+              return;
+            }
+
+            // Create WhatsApp message
+            const message = createWhatsAppMessage("enterprise", formData);
+            const orderPassword = message.match(
+              /🔐 \*Order Password:\* (Ms-Dev-[a-z0-9]+)/
+            )[1];
+            console.log("WhatsApp message:", message);
+
+            const whatsappNumber = "6281908612547";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+              message
+            )}`;
+
+            // Open WhatsApp
+            window.open(whatsappURL, "_blank");
+
+            // Show success message with password
+            alert(
+              `Thank you! Your Enterprise Website order has been prepared.\n\nYour Order Password: ${orderPassword}\n\nPlease send the message in WhatsApp to complete your order.`
+            );
+
+            // Reset form
+            this.reset();
+          });
+        }
+      });
+
+      // Initialize form submissions when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Starter form submission
+      });
+      // General Contact Form Submission
       document
-        .querySelector(".contact-form")
+        .getElementById("general-contact-form")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Get form data
           const formData = new FormData(this);
           const name = formData.get("name");
           const email = formData.get("email");
           const subject = formData.get("subject");
           const message = formData.get("message");
 
-          // Simple validation
           if (!name || !email || !subject || !message) {
             alert("Please fill in all fields");
             return;
           }
 
-          // Format message for WhatsApp
-          const whatsappMessage = `🌐 *New Website Project Inquiry*
-
-👤 *Name:* ${name}
-📧 *Email:* ${email}
-📝 *Website Type:* ${subject}
-
-💬 *Project Details:*
-${message}
-
----
-Sent from Portfolio Website`;
+          const whatsappMessage = `🌐 *Website Project Inquiry*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📝 *Website Type:* ${subject}\n\n💬 *Project Details:*\n${message}\n\n---\nSent from Portfolio Website`;
 
           const whatsappNumber = "6281908612547";
-
-          // Create WhatsApp URL
           const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
             whatsappMessage
           )}`;
 
-          // Open WhatsApp
           window.open(whatsappURL, "_blank");
-
-          // Show success message
           alert(
             "Redirecting to WhatsApp... Please send the message to complete your inquiry!"
           );
-
-          // Reset form
           this.reset();
         });
-
-      // Typing Animation for Hero Title
-      function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.innerHTML = "";
-
-        function type() {
-          if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-          }
-        }
-        type();
-      }
-
-      // Initialize typing animation when page loads
-      window.addEventListener("load", function () {
-        setTimeout(() => {
-          const heroTitle = document.querySelector(".hero-title");
-          const originalText = heroTitle.textContent;
-          typeWriter(heroTitle, originalText, 50);
-        }, 1500);
-      });
 
       // Stats Counter Animation
       function animateCounter(element, target, duration = 2000) {
@@ -2562,7 +4007,6 @@ Sent from Portfolio Website`;
         updateCounter();
       }
 
-      // Initialize counter animation when stats section is visible
       const statsObserver = new IntersectionObserver(function (entries) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -2607,7 +4051,6 @@ Sent from Portfolio Website`;
 
       document.body.appendChild(scrollToTopBtn);
 
-      // Show/hide scroll-to-top button
       window.addEventListener("scroll", function () {
         if (window.pageYOffset > 300) {
           scrollToTopBtn.style.display = "flex";
@@ -2616,7 +4059,6 @@ Sent from Portfolio Website`;
         }
       });
 
-      // Scroll to top functionality
       scrollToTopBtn.addEventListener("click", function () {
         window.scrollTo({
           top: 0,
@@ -2624,405 +4066,28 @@ Sent from Portfolio Website`;
         });
       });
 
-      // Add hover effects to buttons
-      document
-        .querySelectorAll(".cta-button, .btn-secondary")
-        .forEach((btn) => {
-          btn.addEventListener("mouseenter", function () {
-            this.style.transform = "translateY(-2px)";
-          });
-
-          btn.addEventListener("mouseleave", function () {
-            this.style.transform = "translateY(0)";
-          });
-        });
-
       // Keyboard navigation support
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && navMenu.classList.contains("active")) {
-          navMenu.classList.remove("active");
-          const icon = navToggle.querySelector("i");
-          icon.classList.remove("fa-times");
-          icon.classList.add("fa-bars");
+        if (e.key === "Escape") {
+          if (navMenu.classList.contains("active")) {
+            closeMobileMenu();
+          }
+          // Allow escape to go back to home from form pages
+          if (
+            !document.getElementById("home-page").classList.contains("active")
+          ) {
+            showPage("home");
+          }
         }
       });
 
-      // Add focus styles for better accessibility
-      document
-        .querySelectorAll("button, a, input, textarea")
-        .forEach((element) => {
-          element.addEventListener("focus", function () {
-            this.style.outline = "2px solid var(--accent-purple)";
-            this.style.outlineOffset = "2px";
-          });
-
-          element.addEventListener("blur", function () {
-            this.style.outline = "none";
-          });
-        });
-
-      // 3D Robot Animation
-      let scene,
-        camera,
-        renderer,
-        robot,
-        mouseX = 0,
-        mouseY = 0;
-      let eyeBlinkTimer = 0;
-      let isBlinking = false;
-      let blinkDuration = 0;
-
-      function initRobot() {
-        const canvas = document.getElementById("robotCanvas");
-        if (!canvas) return;
-
-        const container = canvas.parentElement;
-        const containerRect = container.getBoundingClientRect();
-
-        // Scene setup
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-        renderer = new THREE.WebGLRenderer({
-          canvas: canvas,
-          antialias: true,
-          alpha: true,
-        });
-
-        renderer.setSize(containerRect.width, containerRect.height);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setClearColor(0x000000, 0);
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-        // Robot group
-        robot = new THREE.Group();
-
-        // Main Body (more rounded, shorter)
-        const bodyGeometry = new THREE.SphereGeometry(0.8, 20, 20);
-        bodyGeometry.scale(1, 0.9, 0.9);
-        const bodyMaterial = new THREE.MeshLambertMaterial({
-          color: 0xf8f9fa,
-          transparent: true,
-          opacity: 0.95,
-        });
-        const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-        body.position.y = -0.5;
-        body.castShadow = true;
-        robot.add(body);
-
-        // Body chest panel
-        const chestGeometry = new THREE.SphereGeometry(0.4, 16, 16);
-        const chestMaterial = new THREE.MeshLambertMaterial({
-          color: 0xe3f2fd,
-        });
-        const chest = new THREE.Mesh(chestGeometry, chestMaterial);
-        chest.position.set(0, -0.3, 0.6);
-        chest.scale.set(1, 0.8, 0.3);
-        robot.add(chest);
-
-        // Head/Helmet (larger and more dome-like)
-        const headGeometry = new THREE.SphereGeometry(1, 24, 24);
-        const headMaterial = new THREE.MeshLambertMaterial({
-          color: 0xf0f8ff,
-          transparent: true,
-          opacity: 0.9,
-        });
-        const head = new THREE.Mesh(headGeometry, headMaterial);
-        head.position.y = 0.8;
-        head.castShadow = true;
-        robot.add(head);
-
-        // Helmet stripe/accent
-        const helmetStripeGeometry = new THREE.TorusGeometry(0.9, 0.06, 8, 20);
-        const helmetStripeMaterial = new THREE.MeshLambertMaterial({
-          color: 0x42a5f5,
-          emissive: 0x1976d2,
-          emissiveIntensity: 0.1,
-        });
-        const helmetStripe = new THREE.Mesh(
-          helmetStripeGeometry,
-          helmetStripeMaterial
-        );
-        helmetStripe.position.y = 1.1;
-        helmetStripe.rotation.x = Math.PI / 2;
-        robot.add(helmetStripe);
-
-        // Visor (large curved dark area)
-        const visorGeometry = new THREE.SphereGeometry(
-          0.78,
-          20,
-          20,
-          0,
-          Math.PI * 2,
-          0.2,
-          Math.PI * 0.6
-        );
-        const visorMaterial = new THREE.MeshLambertMaterial({
-          color: 0x263238,
-          transparent: true,
-          opacity: 0.9,
-        });
-        const visor = new THREE.Mesh(visorGeometry, visorMaterial);
-        visor.position.y = 0.85;
-        visor.position.z = 0.15;
-        robot.add(visor);
-
-        // Eyes (large, oval, glowing)
-        const eyeGeometry = new THREE.SphereGeometry(0.18, 16, 16);
-        eyeGeometry.scale(1.3, 1.8, 0.7);
-        const eyeMaterial = new THREE.MeshLambertMaterial({
-          color: 0x00e5ff,
-          emissive: 0x006064,
-          emissiveIntensity: 0.4,
-        });
-
-        const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
-        leftEye.position.set(-0.25, 0.9, 0.65);
-        leftEye.name = "leftEye";
-        robot.add(leftEye);
-
-        const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
-        rightEye.position.set(0.25, 0.9, 0.65);
-        rightEye.name = "rightEye";
-        robot.add(rightEye);
-
-        // Eye highlights/pupils
-        const pupilGeometry = new THREE.SphereGeometry(0.06, 12, 12);
-        const pupilMaterial = new THREE.MeshLambertMaterial({
-          color: 0xffffff,
-          emissive: 0xe0f7fa,
-          emissiveIntensity: 0.3,
-        });
-
-        const leftPupil = new THREE.Mesh(pupilGeometry, pupilMaterial);
-        leftPupil.position.set(-0.25, 0.95, 0.75);
-        leftPupil.name = "leftPupil";
-        robot.add(leftPupil);
-
-        const rightPupil = new THREE.Mesh(pupilGeometry, pupilMaterial);
-        rightPupil.position.set(0.25, 0.95, 0.75);
-        rightPupil.name = "rightPupil";
-        robot.add(rightPupil);
-
-        // Top antenna/sensor
-        const antennaGeometry = new THREE.SphereGeometry(0.08, 12, 12);
-        const antennaMaterial = new THREE.MeshLambertMaterial({
-          color: 0x29b6f6,
-          emissive: 0x0277bd,
-          emissiveIntensity: 0.3,
-        });
-        const antenna = new THREE.Mesh(antennaGeometry, antennaMaterial);
-        antenna.position.set(0, 1.7, 0);
-        robot.add(antenna);
-
-        // Side sensors/details
-        const sensorGeometry = new THREE.SphereGeometry(0.12, 12, 12);
-        const sensorMaterial = new THREE.MeshLambertMaterial({
-          color: 0x81d4fa,
-        });
-
-        const leftSensor = new THREE.Mesh(sensorGeometry, sensorMaterial);
-        leftSensor.position.set(-0.9, 0.9, 0.2);
-        robot.add(leftSensor);
-
-        const rightSensor = new THREE.Mesh(sensorGeometry, sensorMaterial);
-        rightSensor.position.set(0.9, 0.9, 0.2);
-        robot.add(rightSensor);
-
-        // Arms (small, cute)
-        const armGeometry = new THREE.SphereGeometry(0.15, 12, 12);
-        armGeometry.scale(2.2, 0.8, 0.8);
-        const armMaterial = new THREE.MeshLambertMaterial({ color: 0xf5f5f5 });
-
-        const leftArm = new THREE.Mesh(armGeometry, armMaterial);
-        leftArm.position.set(-0.8, -0.2, 0);
-        leftArm.rotation.z = Math.PI / 12;
-        leftArm.castShadow = true;
-        robot.add(leftArm);
-
-        const rightArm = new THREE.Mesh(armGeometry, armMaterial);
-        rightArm.position.set(0.8, -0.2, 0);
-        rightArm.rotation.z = -Math.PI / 12;
-        rightArm.castShadow = true;
-        robot.add(rightArm);
-
-        // Hands
-        const handGeometry = new THREE.SphereGeometry(0.12, 12, 12);
-        const handMaterial = new THREE.MeshLambertMaterial({ color: 0xe1f5fe });
-
-        const leftHand = new THREE.Mesh(handGeometry, handMaterial);
-        leftHand.position.set(-1.1, -0.35, 0);
-        leftHand.castShadow = true;
-        robot.add(leftHand);
-
-        const rightHand = new THREE.Mesh(handGeometry, handMaterial);
-        rightHand.position.set(1.1, -0.35, 0);
-        rightHand.castShadow = true;
-        robot.add(rightHand);
-
-        // Legs (shorter, cuter)
-        const legGeometry = new THREE.SphereGeometry(0.18, 12, 12);
-        legGeometry.scale(0.9, 1.8, 0.9);
-        const legMaterial = new THREE.MeshLambertMaterial({ color: 0xf8f9fa });
-
-        const leftLeg = new THREE.Mesh(legGeometry, legMaterial);
-        leftLeg.position.set(-0.3, -1.2, 0);
-        leftLeg.castShadow = true;
-        robot.add(leftLeg);
-
-        const rightLeg = new THREE.Mesh(legGeometry, legMaterial);
-        rightLeg.position.set(0.3, -1.2, 0);
-        rightLeg.castShadow = true;
-        robot.add(rightLeg);
-
-        // Feet (rounded, blue accents)
-        const footGeometry = new THREE.SphereGeometry(0.15, 12, 12);
-        footGeometry.scale(1.4, 0.7, 2);
-        const footMaterial = new THREE.MeshLambertMaterial({ color: 0x42a5f5 });
-
-        const leftFoot = new THREE.Mesh(footGeometry, footMaterial);
-        leftFoot.position.set(-0.3, -1.65, 0.1);
-        leftFoot.castShadow = true;
-        robot.add(leftFoot);
-
-        const rightFoot = new THREE.Mesh(footGeometry, footMaterial);
-        rightFoot.position.set(0.3, -1.65, 0.1);
-        rightFoot.castShadow = true;
-        robot.add(rightFoot);
-
-        scene.add(robot);
-
-        // Better lighting setup
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.8);
-        scene.add(ambientLight);
-
-        const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        mainLight.position.set(3, 8, 4);
-        mainLight.castShadow = true;
-        mainLight.shadow.mapSize.width = 2048;
-        mainLight.shadow.mapSize.height = 2048;
-        scene.add(mainLight);
-
-        const fillLight = new THREE.PointLight(0x42a5f5, 0.6, 15);
-        fillLight.position.set(-4, 3, 3);
-        scene.add(fillLight);
-
-        const rimLight = new THREE.PointLight(0x00e5ff, 0.4, 12);
-        rimLight.position.set(2, 2, -3);
-        scene.add(rimLight);
-
-        camera.position.z = 4.5;
-        camera.position.y = 0.2;
-
-        // Mouse tracking
-        document.addEventListener("mousemove", onMouseMove, false);
-
-        // Start animation
-        animate();
-      }
-
-      function onMouseMove(event) {
-        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-      }
-
-      function animate() {
-        requestAnimationFrame(animate);
-
-        if (robot) {
-          // Gentle floating animation
-          robot.rotation.y = Math.sin(Date.now() * 0.0005) * 0.03;
-          robot.position.y = Math.sin(Date.now() * 0.0008) * 0.08;
-
-          // Eye tracking and blinking
-          const leftEye = robot.getObjectByName("leftEye");
-          const rightEye = robot.getObjectByName("rightEye");
-          const leftPupil = robot.getObjectByName("leftPupil");
-          const rightPupil = robot.getObjectByName("rightPupil");
-
-          if (leftEye && rightEye && leftPupil && rightPupil) {
-            // Eye movement following cursor
-            const eyeMovementX = mouseX * 0.12;
-            const eyeMovementY = mouseY * 0.08;
-
-            leftPupil.position.x = -0.25 + eyeMovementX;
-            leftPupil.position.y = 0.95 + eyeMovementY;
-            leftPupil.position.z = 0.75;
-
-            rightPupil.position.x = 0.25 + eyeMovementX;
-            rightPupil.position.y = 0.95 + eyeMovementY;
-            rightPupil.position.z = 0.75;
-
-            // Blinking system
-            eyeBlinkTimer += 0.016;
-
-            if (!isBlinking && eyeBlinkTimer > 2.5 + Math.random() * 3.5) {
-              isBlinking = true;
-              blinkDuration = 0;
-              eyeBlinkTimer = 0;
-            }
-
-            if (isBlinking) {
-              blinkDuration += 0.016;
-
-              let blinkScale = 1;
-              if (blinkDuration < 0.08) {
-                blinkScale = 1 - blinkDuration / 0.08;
-              } else if (blinkDuration < 0.16) {
-                blinkScale = (blinkDuration - 0.08) / 0.08;
-              } else {
-                isBlinking = false;
-                blinkScale = 1;
-              }
-
-              leftEye.scale.y = Math.max(0.1, blinkScale);
-              rightEye.scale.y = Math.max(0.1, blinkScale);
-              leftPupil.scale.y = Math.max(0.1, blinkScale);
-              rightPupil.scale.y = Math.max(0.1, blinkScale);
-            }
-          }
-
-          // Subtle head tracking
-          const head = robot.children.find(
-            (child) =>
-              child.geometry instanceof THREE.SphereGeometry &&
-              child.position.y > 0.5 &&
-              child.material.color.getHex() === 0xf0f8ff
-          );
-          if (head) {
-            head.rotation.x = mouseY * 0.05;
-            head.rotation.y = mouseX * 0.06;
-          }
-        }
-
-        renderer.render(scene, camera);
-      }
-
-      // Handle window resize
-      function onWindowResize() {
-        const canvas = document.getElementById("robotCanvas");
-        if (!canvas) return;
-
-        const container = canvas.parentElement;
-        const containerRect = container.getBoundingClientRect();
-
-        camera.aspect = 1;
-        camera.updateProjectionMatrix();
-        renderer.setSize(containerRect.width, containerRect.height);
-      }
-
-      window.addEventListener("resize", onWindowResize, false);
-
-      // Initialize robot when page loads
-      window.addEventListener("load", function () {
-        setTimeout(() => {
-          initRobot();
-        }, 1500);
-      });
-
-      console.log("🌐 Website Developer Portfolio loaded successfully!");
-      console.log("🤖 Ready for Spline 3D Robot integration!");
-      console.log("✨ All website project features are ready!");
+      console.log(
+        "🌐 Website Developer Portfolio with Order Forms loaded successfully!"
+      );
+      console.log("📋 All pricing form functionality is ready!");
+      console.log("🔐 Auto-generated password system activated!");
+      console.log("💬 Comments system with name masking ready!");
+      console.log("✨ WhatsApp integration active for all packages!");
     </script>
   </body>
 </html>
